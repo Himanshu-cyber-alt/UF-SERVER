@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://uf-client.onrender.com", credentials: true }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api", uploadRoutes);
@@ -51,7 +51,7 @@ app.get("/api/posts/:id", async (req, res) => {
 // ---------------- Socket.IO ----------------
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://localhost:5173", methods: ["GET", "POST"] },
+  cors: { origin: "https://uf-client.onrender.com", methods: ["GET", "POST"] },
 });
 
 // ---------------- Helper: Fetch Posts ----------------
