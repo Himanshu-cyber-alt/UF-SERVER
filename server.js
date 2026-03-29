@@ -16,6 +16,7 @@ dotenv.config();
 
 const app = express();
 
+const PORT = process.env.PORT || 8000;
 // Middleware
 app.use(cors({ origin: "https://unifeed-67.onrender.com", credentials: true }));
 app.use(express.json());
@@ -528,4 +529,6 @@ socket.on("fetch_user_reposts", async (userId) => {
 });
 
 // ---------------- Start Server ----------------
-server.listen(8000, () => console.log("🚀 Server running on port 8000"));
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
