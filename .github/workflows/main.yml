@@ -1,0 +1,21 @@
+name : "CI/CD"
+
+on:
+  push:
+    branches:
+      - main
+    
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: checkout
+        uses:  actions/checkout@v3
+
+      - name:  build docker
+        run:  docker build -t uf-server .
+
+      - name:  deploy to render
+        run:  curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}

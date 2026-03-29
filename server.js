@@ -528,4 +528,4 @@ socket.on("fetch_user_reposts", async (userId) => {
 });
 
 // ---------------- Start Server ----------------
-server.listen(5000, () => console.log("🚀 Server running on port 5000"));
+server.listen(8000, () => console.log("🚀 Server running on port 8000"));
