@@ -61,3 +61,4 @@ temp/
 .next/
 .cache/
 .env
+DatabaseTable.txt
