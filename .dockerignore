@@ -5,7 +5,6 @@ Dockerfile
 .git
 .gitignore
 .env
-.env.*
 dist
 build
 coverage
