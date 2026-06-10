@@ -18,7 +18,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 // Middleware
-app.use(cors({ origin: "https://unifeed-67.onrender.com", credentials: true }));
+app.use(cors({ origin: "http://unifeed-frontend-himanshu-2026.s3-website.ap-south-1.amazonaws.com", credentials: true }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api", uploadRoutes);
@@ -52,7 +52,7 @@ app.get("/api/posts/:id", async (req, res) => {
 // ---------------- Socket.IO ----------------
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "https://unifeed-67.onrender.com", methods: ["GET", "POST"] },
+  cors: { origin: "http://unifeed-frontend-himanshu-2026.s3-website.ap-south-1.amazonaws.com", methods: ["GET", "POST"] },
 });
 
 // ---------------- Helper: Fetch Posts ----------------
