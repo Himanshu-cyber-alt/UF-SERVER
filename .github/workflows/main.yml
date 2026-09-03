@@ -48,16 +48,16 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             aws ecr get-login-password --region ap-south-1 | \
-            docker login --username AWS --password-stdin \
+            sudo docker login --username AWS --password-stdin \
             541739391357.dkr.ecr.ap-south-1.amazonaws.com
 
-            docker pull \
+            sudo docker pull \
             541739391357.dkr.ecr.ap-south-1.amazonaws.com/unifeed-server-img:latest
 
-            docker stop unifeed || true
-            docker rm unifeed || true
+            sudo docker stop unifeed || true
+            sudo docker rm unifeed || true
 
-            docker run -d \
+            sudo docker run -d \
               --name unifeed \
               --env-file /home/ec2-user/UF-SERVER/.env \
               -p 8000:8000 \
