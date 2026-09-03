@@ -1,6 +1,4 @@
 
-
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -18,7 +16,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 // Middleware
-app.use(cors({ origin: "http://unifeed-frontend-himanshu-2026.s3-website.ap-south-1.amazonaws.com", credentials: true }));
+app.use(cors({ origin: "http://unifeed-social-networking.s3-website.ap-south-1.amazonaws.com", credentials: true }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api", uploadRoutes);
@@ -26,6 +24,12 @@ app.use("/profile", profileRoutes);
 app.use("/api/users", usersRoute);
 
 // ---------------- GET Single Post Route ----------------
+
+app.get("/",(req,res)=>{
+res.send("hi");
+});
+
+
 app.get("/api/posts/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -52,7 +56,7 @@ app.get("/api/posts/:id", async (req, res) => {
 // ---------------- Socket.IO ----------------
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://unifeed-frontend-himanshu-2026.s3-website.ap-south-1.amazonaws.com", methods: ["GET", "POST"] },
+  cors: { origin: "http://unifeed-social-networking.s3-website.ap-south-1.amazonaws.com", methods: ["GET", "POST"] },
 });
 
 // ---------------- Helper: Fetch Posts ----------------
